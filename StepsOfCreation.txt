@@ -1,0 +1,45 @@
+Step 1 : Initilize the project
+
+    CMD : python3 -m venv venv
+    CMD : .\venv\Scripts\activate
+    CMD : pip3 install django djangorestframework django-cors-headers
+    CMD : pip3 install PyJWT cryptography datetime
+    CMD : django-admin startproject socialMediaRestApi
+    CMD : cd .\socialMediaRestApi\
+    CMD : python manage.py startapp apis
+
+// Now all the main libraries are installed and project has been Initilized
+
+Step 2 : Modify the settings.py
+
+    Settings.py file modification:
+                                INSTALLED_APPS = [
+                                    .
+                                    .
+                                    .
+                                    'rest_framework',
+                                    'corsheaders',
+                                    'apis.apps.ApisConfig'
+                                ]
+                                MIDDLEWARE = [
+                                    .
+                                    'django.contrib.sessions.middleware.SessionMiddleware',
+                                    "corsheaders.middleware.CorsMiddleware",
+                                    'django.middleware.common.CommonMiddleware',
+                                    .
+                                    .
+                                    .
+                                ]
+
+Step 3 : Decide the schema of the database
+
+    For our project we require 3 tables ->
+
+    Table 1 : USER -> User_id, Email, password, followers, following, Posts
+    Table 2 : Post -> Post_id, Title, Description, Created_Time, Comments, Likes, no_of_comments,no_of_likes
+    Table 3 : Comment -> Comment_id, Post_id(optional), User_id, Comment_time, Comment_description
+
+Step 4 : Make the models based on our schema
+
+Step 5 : Modify/Create Urls.py and Make Views
+
